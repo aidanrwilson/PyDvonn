@@ -163,73 +163,36 @@ class DvonnWindow(Window):
 
 STANDARD_BOARD_WIDTH = 11
 STANDARD_BOARD_HEIGHT = 5
-
-# class Board():
-#     def __init__(self, width=STANDARD_BOARD_WIDTH, height=STANDARD_BOARD_HEIGHT):
-#         self.possible_fields = []
-#         for i in range()
+STANDARD_BOARD_SHAPE = '  ---------  \n ---------- \n-----------\n ---------- \n  ---------  '
 
 
-class FieldClass():
-    def __init__(self, name, stack=None):
-        self.name = name
-        self.stack = stack
-        if stack is None:
-            self.valid = False
+class Board():
+    def __init__(self, width=STANDARD_BOARD_WIDTH, height=STANDARD_BOARD_HEIGHT, shape=STANDARD_BOARD_SHAPE):
+        if shape != STANDARD_BOARD_SHAPE:
+            # width =
+            for row in enumerate(shape.split()
+        elif (width != STANDARD_BOARD_WIDTH) and (height == STANDARD_BOARD_HEIGHT):
+        elif (width == STANDARD_BOARD_WIDTH) and (height != STANDARD_BOARD_HEIGHT):
+        else:
+
+        self.possible_fields=[]
+        for i in range()
 
 
-class StackClass():
-    def __init__(self, height, control, order):
-        self.height = height
-        self.control = control
-        self.order = order
+class Field():
+    __slots__=('name', 'stack')
 
-
-class StackClassSlots():
-    __slots__ = ('height', 'control', 'order')
-
-    def __init__(self, height, control, order):
-        self.height = height
-        self.control = control
-        self.order = order
-
-
-class StackSubdictBase(dict):
-    def __init__(self, height, control, order):
-        super(StackSubdictBase, self).__init__(height=height, control=control, order=order)
-
-
-class StackSubdictAttr(dict):
-    __slots__ = ()
-
-    def __init__(self, height, control, order):
-        super(StackSubdictAttr, self).__init__(height=height, control=control, order=order)
-
-    def __getattr__(self, attrname):
-        logging.debug("Calling __getattr__(%s)", attrname)
-        try:
-            return dict.__getitem__(self, attrname)
-        except KeyError as key_err:
-            raise AttributeError(key_err)
-
-    def __setattr__(self, attrname, attrval):
-        logging.debug("Calling __getattr__(%s)", attrname)
-        dict.__setitem__(self, attrname, attrval)
-
-    # def __delattr__(self, attrname):
-    #     logging.debug("Calling __getattr__(%s)", attrname)
-    #     try:
-    #         dict.__delitem__(self, attrname)
-    #     except KeyError as key_err:
-    #         raise AttributeError(key_err)
+    def __init__(self, name, stack=''):
+        self.name=name
+        self.stack=stack
 
 
 def start_game():
     """
-    Start DVONN game.
+    Start Dvonn game.
     """
 
-    config = get_dvonn_config()
+    config=get_dvonn_config()
 
     logging.info("Window GL Context Values Available, Given User-Specified Options:")
     logging.info("-> buffer_size: %s (%s, %s, %s, %s)", config.buffer_size,
@@ -247,7 +210,7 @@ def start_game():
     logging.info("-> minor_version: %s", config.minor_version)
     logging.info("-> forward_compatible: %s", config.forward_compatible)
 
-    window = DvonnWindow(config)
+    window=DvonnWindow(config)
     print(dir(window))
 
     logging.info("Created DvonnWindow with Following Initial Values:")
@@ -260,11 +223,11 @@ def start_game():
 
 
 if __name__ == '__main__':
-    PARSER = argparse.ArgumentParser()
+    PARSER=argparse.ArgumentParser()
 
     ### ADD WHATEVER ARGS ###
 
-    ARGS = PARSER.parse_args()
+    ARGS=PARSER.parse_args()
 
     ### DO WHATEVER WITH ARGUMENTS ###
 
